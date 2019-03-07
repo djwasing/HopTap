@@ -1,27 +1,35 @@
 <h1>Whiskey United.</h1>
 
-<h2>Whiskeys I have already sampled:</h2>
+<h2>Whiskeys I have yet to sample:</h2>
+
 
 <ul>
   {{#each whiskey}}
-    {{#unless sampled}}
-      {{> whiskey/whiskey-block sampled=true}}
+    {{#unless this.sampled}}
+        <li>
+            {{this.name}}
+        </li>
+        <button class="sampledBtn" id={{this.id}}>
+            Sampled
+        </button>
     {{/unless}}
   {{/each}}
 </ul>
 
-<h2>Whiskeys I have yet to sample:</h2>
+<h2>Whiskeys I have already sampled:</h2>
 
 <ul>
   {{#each whiskey}}
     {{#if sampled}}
-      {{> whiskey/whiskey-block sampled=false}}
+        <li>
+            {{this.name}}
+        </li>
     {{/if}}
   {{/each}}
 </ul>
 
 <h2>Add a Whiskey</h2>
-<form class="create-form">
+<form action="/api/whiskey" method="POST" class="create-form">
 
   <div class="form-group">
     <label for="ca">Whiskey Name:</label>
@@ -36,3 +44,15 @@
 
   <button type="submit">Add Whiskey</button>
 </form>
+
+<script>
+    alert("js is working");
+    $(function() {
+        console.log("jquery");
+        $(".sampledBtn").click(function() {
+        var id = $(this).attr("id");
+        console.log(id);
+    })
+    })
+    
+</script>

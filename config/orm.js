@@ -26,12 +26,12 @@ function objToSql(ob) {
 }
 
 var orm = {
-    selectAll: function(colToSearch, tableInput) {
-        var queryString = "SELECT ?? FROM ??";
-        connection.query(queryString, [colToSearch, tableInput], function(err, result) {
+    selectAll: function(cb) {
+        var queryString = "SELECT * FROM whiskeyTable";
+        connection.query(queryString, function(err, result) {
             if (err) throw err;
             console.log("List of all whiskeys: ");
-            console.log(result);
+            cb(result);
         });
     },
     insertOne: function(table, cols, vals, cb) {
@@ -43,7 +43,7 @@ var orm = {
         queryString += printQuestionMarks(vals.length);
         queryString += ") ";
 
-        console.log(queryString);
+        console.log("orm.js queryString 46: " + queryString);
 
         connection.query(queryString, vals, function(err, result) {
             if (err) throw err;

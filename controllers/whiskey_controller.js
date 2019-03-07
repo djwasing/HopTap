@@ -8,18 +8,20 @@ router.get("/", function(req, res) {
         var hbsObject = {
             whiskey: data
         };
-        console.log(hbsObject);
+        console.log(`hbsObject11 ${hbsObject}`);
         res.render("index", hbsObject);
+        //res.json(hbsObject);
     });
 });
 
 router.post("/api/whiskey", function(req, res) {
+    console.log("18 whiskeyController: ", req.body);
     whiskey.insertOne([
         "name", "sampled"
     ], [
         req.body.name, req.body.sampled
-    ], function(result) {
-        res.json({ id: result.insertId });
+    ], function() {
+        res.redirect('/');
     });
 });
 
