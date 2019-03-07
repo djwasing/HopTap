@@ -1,0 +1,38 @@
+<h1>Whiskey United.</h1>
+
+<h2>Whiskeys I have already sampled:</h2>
+
+<ul>
+  {{#each whiskey}}
+    {{#unless sampled}}
+      {{> whiskey/whiskey-block sampled=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Whiskeys I have yet to sample:</h2>
+
+<ul>
+  {{#each whiskey}}
+    {{#if sampled}}
+      {{> whiskey/whiskey-block sampled=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Whiskey</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Whiskey Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="sampled">Already Sampled?</label><br>
+    <input type="radio" name="sampled" value="1" checked> Already Sampled.<br>
+    <input type="radio" name="sampled" value="0"> Yet to Sample.
+  </div>
+
+  <button type="submit">Add Whiskey</button>
+</form>
