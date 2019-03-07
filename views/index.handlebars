@@ -1,58 +1,78 @@
-<h1>Whiskey United.</h1>
+<div class="container">
+    <h1 class="text-center" id="title">Whiskey United</h1>
+    <h4 class="text-center" id="slogan">With Liberty, and Whiskey for All.</h4>
+</div>
+<div class="content">
+    <div class="row" id="tables">
+        <div class="col-md-6">
+            <div class="container text-center listArea">
+                <h3 class="topper">Yet to sample</h3>
 
-<h2>Whiskeys I have yet to sample:</h2>
+                <ul class="list">
+                    {{#each whiskey}}
+                    {{#unless this.sampled}}
+                    <li>
+                        {{this.name}}
+                        <button class="sampledBtn" id={{this.id}}>
+                            Sampled
+                        </button>
+                    </li>
+                    {{/unless}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="container text-center listArea">
+                <h3 class="topper">Already sampled</h3>
+
+                <ul class="list">
+                    {{#each whiskey}}
+                    {{#if sampled}}
+                    <li>
+                        {{this.name}}
+                    </li>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
 
 
-<ul>
-  {{#each whiskey}}
-    {{#unless this.sampled}}
-        <li>
-            {{this.name}}
-        </li>
-        <button class="sampledBtn" id={{this.id}}>
-            Sampled
-        </button>
-    {{/unless}}
-  {{/each}}
-</ul>
+    <div class="row" id="formArea">
+        <div class="col-md-12">
+            <div class="container text-center">
+                <h2 class="topper">Add a Whiskey</h2>
+                <form action="/api/whiskey" method="POST" class="create-form">
 
-<h2>Whiskeys I have already sampled:</h2>
+                    <div class="form-group">
+                        <label for="ca">Whiskey Name:</label>
+                        <input type="text" id="ca" name="name">
+                    </div>
 
-<ul>
-  {{#each whiskey}}
-    {{#if sampled}}
-        <li>
-            {{this.name}}
-        </li>
-    {{/if}}
-  {{/each}}
-</ul>
+                    <div class="form-group">
+                        <label for="sampled">Already Sampled?</label><br>
+                        <input type="radio" name="sampled" value="1" checked> Already Sampled.<br>
+                        <input type="radio" name="sampled" value="0"> Yet to Sample.
+                    </div>
 
-<h2>Add a Whiskey</h2>
-<form action="/api/whiskey" method="POST" class="create-form">
+                    <button type="submit">Add Whiskey</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
-  <div class="form-group">
-    <label for="ca">Whiskey Name:</label>
-    <input type="text" id="ca" name="name">
-  </div>
 
-  <div class="form-group">
-    <label for="sampled">Already Sampled?</label><br>
-    <input type="radio" name="sampled" value="1" checked> Already Sampled.<br>
-    <input type="radio" name="sampled" value="0"> Yet to Sample.
-  </div>
-
-  <button type="submit">Add Whiskey</button>
-</form>
 
 <script>
-    alert("js is working");
-    $(function() {
+    $(function () {
         console.log("jquery");
-        $(".sampledBtn").click(function() {
-        var id = $(this).attr("id");
-        console.log(id);
+        $(".sampledBtn").click(function () {
+            var id = $(this).attr("id");
+        })
     })
-    })
-    
+
 </script>

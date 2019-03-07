@@ -1,3 +1,58 @@
-h1 {
-    color: red;
+body {
+    background-color: rgb(48, 27, 27);
+}
+
+.content {
+    background-image: url(../img/distillery.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    margin-bottom: 30px;
+}
+
+#title {
+    margin-top: 35px;
+    color: white;
+    font-weight: bold;
+    font-family: 'Playfair Display SC', serif;
+    font-size: 55px;
+}
+
+#slogan {
+    color: white;
+    font-family: 'Meddon', cursive;
+    font-size: 20px;
+}
+
+#tables {
+    color: white;
+    margin-top: 46px;
+}
+
+.listArea {
+    background-color: rgba(0, 0, 0, 0.459);
+    height: 300px;
+    border-radius: 12px;
+    margin-top: 20px;
+    width: 85%;
+}
+
+.list {
+    list-style: none;
+    font-family: 'Cinzel', serif;
+}
+
+#formArea {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.459);
+    border-radius: 12px;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 36px;
+    margin-top: 20px;
+    padding-bottom: 36px;
+}
+
+.topper {
+    font-family: 'Playfair Display SC', serif;
 }
