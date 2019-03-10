@@ -50,15 +50,13 @@ var orm = {
             cb(result);
         });
     },
-    updateOne: function(table, objColVals, condition, cb) {
+    updateOne: function(table, buttonID, cb) {
         var queryString = `UPDATE ${table}`;
+        
+        queryString += " SET sampled=1 ";
+        queryString += `WHERE id=${toString(buttonID)}`;
 
-        queryString += " SET ";
-        queryString += objToSql(objColVals);
-        queryString += " WHERE ";
-        queryString += condition;
-
-        console.log(queryString);
+        console.log("queryString: " + queryString);
         connection.query(queryString, function(err, result) {
             if (err) throw err;
             cb(result);

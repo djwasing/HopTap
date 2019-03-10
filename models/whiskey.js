@@ -11,8 +11,8 @@ var whiskey = {
             cb(res);
         });
     },
-    updateOne: function(objColVals, condition, cb) {
-        orm.updateOne("whiskeyTable", objColVals, condition, function(res) {
+    updateOne: function(buttonID, cb) {
+        orm.updateOne("whiskeyTable", buttonID, function(res) {
             cb(res);
         });
     }
