@@ -26,11 +26,12 @@ router.post("/api/whiskey", function(req, res) {
 });
 
 router.put("/api/whiskey/:id", function(req, res) {
-    var buttonID = req.params.id;
-    //console.log("condition", condition);
+    var condition = "id = " + req.params.id;
+    console.log("id: " + req.params.id);
+    console.log("condition: ", condition);
     whiskey.updateOne({
         sampled: req.body.sampled
-    }, buttonID, function(result) {
+    }, condition, function(result) {
         if (result.changedRows == 0) {
             return res.status(404).end();
         }else{

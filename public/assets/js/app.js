@@ -1,15 +1,18 @@
 $(function () {
     console.log("app.js running");
     $(".sampledBtn").click(function () {
-        var buttonID = parseInt($(this).attr("id"));
+        var id = parseInt($(this).attr("id"));
+        var newSampled = { sampled: true };
+        console.log(newSampled);
 
-        console.log(`button ID: ${buttonID}`);
+
+        console.log(`button ID: ${id}`);
         
-        $.ajax(`/api/whiskey/${buttonID}`, {
+        $.ajax(`/api/whiskey/${id}`, {
             type: "PUT",
-            id: buttonID
+            data: newSampled
         }).then(() => {
-            console.log(`changed sampled value of id: ${buttonID} to true`);
+            console.log(`changed sampled to `, newSampled);
             location.reload();
         });
     });
