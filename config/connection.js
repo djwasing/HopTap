@@ -1,6 +1,17 @@
 
 var mysql = require("mysql");
 
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+}else{
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Riften#333',
+    database: 'whiskey_db'
+  });
+};
+
 // Setting up our connection information
 var source = {
   localhost: {
